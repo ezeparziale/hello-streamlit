@@ -1,4 +1,4 @@
-# Demo streamlit para analisis de datos
+# 📊 Demo streamlit para analisis de datos
 
 [![Visits Badge](https://badges.pufler.dev/visits/ezeparziale/hello-streamlit?style=flat-square)]()  
 
