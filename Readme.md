@@ -1,21 +1,35 @@
 # Demo streamlit para analisis de datos
 
-```cmd
+[![Visits Badge](https://badges.pufler.dev/visits/ezeparziale/hello-streamlit?style=flat-square)]()  
+
+Demo que utiliza datos de estadisticas de NBA
+
+![image](./img/app.png)
+
+## :floppy_disk: Instalación
+
+```shell
 python -m venv env
 ```
 
-```cmd
-env/Scripts/Activate.ps1
+```shell
+source env/bin/activate
 ```
 
-```cmd
+```shell
 pip install -r requirements.txt
 ```
 
-```cmd
+```shell
 python.exe -m pip install --upgrade pip
 ```
 
-```cmd
-streamlit run .\nba_app.py
+## :running_man: Run
+
+```shell
+streamlit run app/nba_app.py
+```
+
+```http
+http://localhost:8501
 ```
