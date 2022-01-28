@@ -1,19 +1,13 @@
-from turtle import width
-from webbrowser import BackgroundBrowser
 import streamlit as st
 import pandas as pd
-import base64
-import matplotlib.pyplot as plt
-import seaborn as sns
-import numpy as np
-from io import BytesIO
-import plotly.express as px
+import plotly.graph_objects as go
 
 
+# Configuración pandas
+pd.options.display.float_format = "{:,.1f}".format  # Para mostrar con dos decimales
+
+# Configuración pagina streamlit
 st.set_page_config(page_title="NBA stats", layout="wide", page_icon=":basketball:")
-
-# Titulo
-# st.title('Streamlit para análisis de datos')
 
 # Bara lateral
 st.sidebar.header("Opciones:")
@@ -24,61 +18,48 @@ t1.image("img/logo.png", width=50)
 t2.title("NBA stats")
 
 # Carga de datos
-@st.cache
-def load_data():
-    df = pd.read_json(
-        "https://raw.githubusercontent.com/ezeparziale/hello-docker/master/src/data/players.json"
-    )
-    filter_col = [
-        "AGE",
-        "GP",
-        "MPG",
-        "MIN_pct",
-        "USG_pct",
-        "TO_pct",
-        "FTA",
-        "FT_pct",
-        "twoPA",
-        "twoP_pct",
-        "threePA",
-        "threeP_pct",
-        "eFG_pct",
-        "TS_pct",
-        "PPG",
-        "RPG",
-        "TRB_pct",
-        "APG",
-        "AST_pct",
-        "SPG",
-        "BPG",
-        "TOPG",
-        "VIV",
-        "ORTGO",
-        "DRTGD",
-    ]
-    df = df.rename(columns={"FULL_NAME": "JUGADOR"})
-    for column in filter_col:
-        df[column] = df[column].astype(str)
-        df[column] = df[column].str.replace(",", ".").astype(float)
+@st.cache(allow_output_mutation=True)
+def load_data_players():
+    df = pd.read_csv("data/players.csv")
+    filter_col = ["conference_id", "division_id", "region", "team_name", "team_img"]
+    df = df.drop(filter_col, axis=1)
+    # df = df.rename(columns={"FULL_NAME": "JUGADOR"})
+    # for column in filter_col:
+    #     df[column] = df[column].astype(str)
+    # df[column] = df[column].str.replace(",", ".").astype(float)
     return df
 
 
-pd.options.display.float_format = "{:,.1f}".format  # Para mostrar con dos decimales
+@st.cache(allow_output_mutation=True)
+def load_data_teams():
+    return pd.read_csv("data/teams.csv")
 
-df_nba_stats = load_data()  # Cargamos los datos en el dataframe
+
+df_teams = load_data_teams()  # Cargamos los datos de equipos en el dataframe
+df_players = load_data_players()  # Cargamos los datos de jugadores en el dataframe
 
 # Selector de Jugador
-sorted_unique_player = sorted(df_nba_stats.JUGADOR.unique())
-all_players = st.sidebar.checkbox("Ver todos los jugadores", key="JUGADOR", value=True)
+sorted_unique_player = df_players.player_name.unique()
+all_players = st.sidebar.checkbox(
+    "Ver todos los jugadores", key="player_name", value=True
+)
 
 if all_players:
     selected_player = st.sidebar.selectbox("JUGADOR", ["Todos"])
 else:
     selected_player = st.sidebar.selectbox("JUGADOR", sorted_unique_player)
+    compare_players = st.sidebar.checkbox(
+        "Comparar jugadores", key="compare_player", value=False
+    )
+
+    if compare_players:
+        selected_player_2 = st.sidebar.selectbox("JUGADOR 2", sorted_unique_player, index=1)
+
+
 
 # Selector de Equipos
-sorted_unique_team = sorted(df_nba_stats.TEAM.unique())
-all_teams = st.sidebar.checkbox("Ver todos los equipos", key="TEAM", value=True)
+sorted_unique_team = sorted(df_teams.team_abbrev.unique())
+all_teams = st.sidebar.checkbox("Ver todos los equipos", key="team_abbrev", value=True)
 
 if all_teams:
     selected_team = st.sidebar.multiselect(
@@ -87,26 +68,23 @@ if all_teams:
 else:
     selected_team = st.sidebar.multiselect("TEAM", sorted_unique_team)
 
-# Selector de posición del jugador
-unique_pos = sorted(df_nba_stats.POS.unique())
-all_pos = st.sidebar.checkbox("Ver todas las posiciones", key="POS", value=True)
-
-if all_pos:
-    selected_pos = st.sidebar.multiselect("POS", unique_pos, unique_pos)
-else:
-    selected_pos = st.sidebar.multiselect("POS", unique_pos)
 
 # Filtro el dataframe con los valores seleccionados
 if all_players:
-    df_selected = df_nba_stats[
-        (df_nba_stats.TEAM.isin(selected_team)) & (df_nba_stats.POS.isin(selected_pos))
+    df_selected = df_players[
+        (
+            df_players.team_abbrev.isin(selected_team)
+        )  # & (df_players.POS.isin(selected_pos))
     ]
 else:
-    df_selected = df_nba_stats[df_nba_stats.JUGADOR == selected_player]
+    if compare_players:
+        df_selected = df_players[(df_players.player_name == selected_player) | (df_players.player_name == selected_player_2)]
+    else:
+        df_selected = df_players[(df_players.player_name == selected_player)]
 
 
 # Logos de equipos
-teams = sorted(df_selected.TEAM.unique())
+teams = sorted(df_teams.team_abbrev.unique())
 teams_list = []
 for team in teams:
     path_team = "./img/teams/" + team + ".png"
@@ -124,51 +102,113 @@ st.write(
     + " columnas"
 )
 
+player_img_size = st.sidebar.slider("JUGADOR TAMAÑO IMAGEN", 50, 200, 80)
+team_img_size = st.sidebar.slider("TEAM TAMAÑO IMAGEN", 50, 130, 60)
+
+
 # Mostramos el dataframe
 with st.container():
+    df_players_img = df_selected.copy()
+    df_players_img["player_img_url"] = [
+        "<img src='"
+        + r.player_img
+        + f"""' style='display:block;margin-left:auto;margin-right:auto;width:{player_img_size}px;border:0;'>"""
+        for ir, r in df_players_img.iterrows()
+    ]
+    df_players_img["team_img_small_url"] = [
+        "<img src='"
+        + r.team_img_small
+        + f"""' style='display:block;margin-left:auto;margin-right:auto;width:{team_img_size}px;border:0;'>"""
+        for ir, r in df_players_img.iterrows()
+    ]
+
+    df_players_img = df_players_img.drop(
+        ["player_img", "team_img_small", "team_id"], axis=1
+    )
+    column_names = [
+        "player_img_url",
+        "player_name",
+        "team_abbrev",
+        "team_img_small_url",
+        "hgt",
+        "stre",
+        "spd",
+        "jmp",
+        "endu",
+        "ins",
+        "dnk",
+        "ft",
+        "fg",
+        "tp",
+        "diq",
+        "oiq",
+        "drb",
+        "pss",
+        "reb",
+    ]
+
     columns = st.multiselect(
         "Columnas",
-        df_nba_stats.columns,
-        list(df_nba_stats.columns),
+        column_names,
+        column_names[:10],
         help="Seleccione las columnas a visualizar",
     )
-    st.dataframe(df_selected[columns])
 
-# Export a CSV
-def filedownload(df):
-    csv = df.to_csv(index=False)
-    b64 = base64.b64encode(csv.encode()).decode()  # strings <-> bytes conversions
-    href = (
-        f'<a href="data:file/csv;base64,{b64}" download="NBA_stats.csv">Export CSV</a>'
-    )
-    return href
+    df_players_img = df_players_img.reindex(columns=columns)
+
+    st.write(df_players_img.to_html(escape=False, index=False), unsafe_allow_html=True)
 
 
 # Link para descargar el csv
-st.markdown(filedownload(df_selected), unsafe_allow_html=True)
-
-# Subtitulo
-st.subheader("Edad promedio:")
-
-# Grafico
-aux = df_selected.groupby("TEAM")["AGE"].mean().round(2)
-aux = pd.DataFrame({"TEAM": aux.index, "AGE_mean": aux.values})
-aux = aux.sort_values("AGE_mean")
-fig = px.bar(aux, x='AGE_mean', y='TEAM', orientation='h', hover_data=["TEAM","AGE_mean"], text='AGE_mean')
-config = {'displayModeBar': False}
-fig.update_traces(marker_color='#C9082A')
-fig.update_layout(
-    autosize=False,
-    width=30,
-    height=800,
-    paper_bgcolor='rgba(0,0,0,0)',
-    plot_bgcolor='rgba(0,0,0,0)',
-     margin=dict(
-        l=50,
-        r=50,
-        b=0,
-        t=0,
-        pad=4
-    ),
+st.sidebar.download_button(
+    label="Exportar a CSV", 
+    data=df_selected.to_csv(index=False).encode("utf-8"), 
+    file_name="NBA_stats.csv", 
+    mime="text/csv",
+    help="Exporta datos en formato CSV"
 )
-st.plotly_chart(fig, use_container_width=True, config=config)
+
+# Grafico radar
+if all_players is False:
+    fig = go.Figure()
+    team_1 = df_players_img["team_abbrev"].values.tolist()[0]
+    color_1 = df_teams[df_teams.team_abbrev == team_1]["color_0"].values.tolist()[0]
+    ratings = ["hgt","stre","spd","jmp","endu","ins"]
+    df_player_1 = pd.DataFrame(
+        dict(
+            r=df_players_img[ratings].values.tolist()[0],
+            theta=ratings,
+        )
+    )
+    fig.add_trace(go.Scatterpolar(
+        r=df_player_1["r"],
+        theta=ratings,
+        fill='toself',
+        marker = dict(color = color_1),
+        name=df_players_img["player_name"].values.tolist()[0]
+    ))
+    if compare_players:
+        team_2 = df_players_img["team_abbrev"].values.tolist()[1]
+        if team_1 ==  team_2:
+            color_2 = df_teams[df_teams.team_abbrev == team_2]["color_2"].values.tolist()[0]
+        else:
+            color_2 = df_teams[df_teams.team_abbrev == team_2]["color_0"].values.tolist()[0]
+        df_player_2 = pd.DataFrame(
+            dict(
+                r=df_players_img[ratings].values.tolist()[1],
+                theta=ratings,
+            )
+        )
+        fig.add_trace(go.Scatterpolar(
+            r=df_player_2["r"],
+            theta=ratings,
+            marker = dict(color = color_2),
+            name=df_players_img["player_name"].values.tolist()[1]
+        ))
+
+    fig.update_traces(fill="toself")
+    fig.update_polars(bgcolor="#ffffff")
+    fig.update_polars(angularaxis_showgrid=False)
+    fig.update_polars(radialaxis_showgrid=False)
+
+    st.plotly_chart(fig)

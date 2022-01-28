@@ -1,0 +1,31 @@
+team_id,conference_id,division_id,region,team_name,team_abbrev,colors,team_img,team_img_small,color_0,color_1,color_2
+0,0,2,Atlanta,Hawks,ATL,"['#c8102e', '#ffffff', '#fdb927']",https://i.imgur.com/i1TZWrw.png,https://i.imgur.com/bFOmyEh.png,#c8102e,#ffffff,#fdb927
+1,0,0,Boston,Celtics,BOS,"['#007A33', '#ffffff', '#ffffff']",https://i.imgur.com/xKp3GGG.png,https://i.imgur.com/Jts3BXK.png,#007A33,#ffffff,#ffffff
+2,0,0,Brooklyn,Nets,BKN,"['#000000', '#FFFFFF', '#000000']",https://i.imgur.com/lDrufi8.png,https://i.imgur.com/hehPiuV.png,#000000,#FFFFFF,#000000
+3,0,2,Charlotte,Hornets,CHA,"['#00788C', '#1d1160', '#A1A1A4']",https://i.imgur.com/hW7G08N.png,https://i.imgur.com/vXDPD5H.png,#00788C,#1d1160,#A1A1A4
+4,0,1,Chicago,Bulls,CHI,"['#CE1141', '#FFFFFF', '#000000']",https://i.imgur.com/Nulx9UE.png,https://i.imgur.com/T8ApQxR.png,#CE1141,#FFFFFF,#000000
+5,0,1,Cleveland,Cavaliers,CLE,"['#6F263D', '#041E42', '#FFB81C']",https://i.imgur.com/Mh8KHoh.png,https://i.imgur.com/VXYRGJ5.png,#6F263D,#041E42,#FFB81C
+6,1,3,Dallas,Mavericks,DAL,"['#0064b1', '#bbc4ca', '#000000']",https://i.imgur.com/OGDsVKN.png,https://i.imgur.com/kK4kDaz.png,#0064b1,#bbc4ca,#000000
+7,1,4,Denver,Nuggets,DEN,"['#0E2240', '#FEC524', '#8B2131']",https://i.imgur.com/qdYVFSV.png,https://i.imgur.com/xyFKqng.png,#0E2240,#FEC524,#8B2131
+8,0,1,Detroit,Pistons,DET,"['#1d428a', '#c8102e', '#bec0c2']",https://i.imgur.com/uF4RvQt.png,https://i.imgur.com/XKpV0aX.png,#1d428a,#c8102e,#bec0c2
+9,1,5,Golden State,Warriors,GSW,"['#1D428A', '#ffc72c', '#ffc72c']",https://i.imgur.com/lPL67qh.png,https://i.imgur.com/46Wu1vc.png,#1D428A,#ffc72c,#ffc72c
+10,1,3,Houston,Rockets,HOU,"['#CE1141', '#ffffff', '#C4CED4']",https://i.imgur.com/nrigz17.png,https://i.imgur.com/MQCKbK9.png,#CE1141,#ffffff,#C4CED4
+11,0,1,Indiana,Pacers,IND,"['#002D62', '#FDBB30', '#BEC0C2']",https://i.imgur.com/9MYESXY.png,https://i.imgur.com/kb9F5EN.png,#002D62,#FDBB30,#BEC0C2
+12,1,5,Los Angeles,Clippers,LAC,"['#1d428a', '#BEC0C2', '#c8102E']",https://i.imgur.com/3WRLhVA.png,https://i.imgur.com/fm3b2SJ.png,#1d428a,#BEC0C2,#c8102E
+13,1,5,Los Angeles,Lakers,LAL,"['#FDB927', '#552583', '#000000']",https://i.imgur.com/UWEGaGk.png,https://i.imgur.com/Xwr5PFQ.png,#FDB927,#552583,#000000
+14,1,3,Memphis,Grizzlies,MEM,"['#5D76A9', '#12173F', '#F5B112']",https://i.imgur.com/8A1a3zw.png,https://i.imgur.com/mRTBrVV.png,#5D76A9,#12173F,#F5B112
+15,0,2,Miami,Heat,MIA,"['#000000', '#ffffff', '#98002e']",https://i.imgur.com/GpjJXPd.png,https://i.imgur.com/DIKI6hY.png,#000000,#ffffff,#98002e
+16,0,1,Milwaukee,Bucks,MIL,"['#00471B', '#EEE1C6', '#0077c0']",https://i.imgur.com/DphT0BT.png,https://i.imgur.com/tg53Wze.png,#00471B,#EEE1C6,#0077c0
+17,1,4,Minnesota,Timberwolves,MIN,"['#0c2340', '#ffffff', '#236192']",https://i.imgur.com/037yAWf.png,https://i.imgur.com/tVyaRnG.png,#0c2340,#ffffff,#236192
+18,1,3,New Orleans,Pelicans,NOP,"['#0C2340', '#C8102E', '#85714D']",https://i.imgur.com/vB0C6GZ.png,https://i.imgur.com/NUWBVXh.png,#0C2340,#C8102E,#85714D
+19,0,0,New York,Knicks,NYK,"['#006BB6', '#F58426', '#BEC0C2']",https://i.imgur.com/5sMoAPA.png,https://i.imgur.com/nvApVkz.png,#006BB6,#F58426,#BEC0C2
+20,1,4,Oklahoma City,Thunder,OKC,"['#007ac1', '#ffffff', '#ef3b24']",https://i.imgur.com/fsQiSlP.png,https://i.imgur.com/ifBY6ON.png,#007ac1,#ffffff,#ef3b24
+21,0,2,Orlando,Magic,ORL,"['#0077c0', '#C4ced4', '#000000']",https://i.imgur.com/H7YpO5e.png,https://i.imgur.com/eWcrkZz.png,#0077c0,#C4ced4,#000000
+22,0,0,Philadelphia,76ers,PHI,"['#006bb6', '#ffffff', '#ed174c']",https://i.imgur.com/LfVzjKN.png,https://i.imgur.com/Paxjuko.png,#006bb6,#ffffff,#ed174c
+23,1,5,Phoenix,Suns,PHX,"['#1d1160', '#e56020', '#000000']",https://i.imgur.com/hyi60nj.png,https://i.imgur.com/UwbWcAg.png,#1d1160,#e56020,#000000
+24,1,4,Portland,Trail Blazers,POR,"['#E03A3E', '#000000', '#E03A3E']",https://i.imgur.com/IfjmjFJ.png,https://i.imgur.com/u1iRngy.png,#E03A3E,#000000,#E03A3E
+25,1,5,Sacramento,Kings,SAC,"['#5a2d81', '#ffffff', '#63727a']",https://i.imgur.com/WgHr0BH.png,https://i.imgur.com/qYg12Er.png,#5a2d81,#ffffff,#63727a
+26,1,3,San Antonio,Spurs,SAS,"['#000000', '#c4ced4', '#c4ced4']",https://i.imgur.com/yXLRt2y.png,https://i.imgur.com/HSDTN4L.png,#000000,#c4ced4,#c4ced4
+27,0,0,Toronto,Raptors,TOR,"['#ce1141', '#000000', '#ce1141']",https://upload.wikimedia.org/wikipedia/en/thumb/3/36/Toronto_Raptors_logo.svg/1024px-Toronto_Raptors_logo.svg.png,https://i.imgur.com/RIJMbvD.png,#ce1141,#000000,#ce1141
+28,1,4,Utah,Jazz,UTA,"['#002B5C', '#F9A01B', '#00471B']",https://i.imgur.com/H3ZIR44.png,https://i.imgur.com/MUB0Jcx.png,#002B5C,#F9A01B,#00471B
+29,0,2,Washington,Wizards,WAS,"['#002B5C', '#e31837', '#C4CED4']",https://i.imgur.com/KAX48d0.png,https://i.imgur.com/xwDq8vp.png,#002B5C,#e31837,#C4CED4
