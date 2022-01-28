@@ -1,10 +1,12 @@
-# 📊 Demo streamlit para analisis de datos
+# :bar_chart: Demo streamlit para analisis de datos
 
 [![Visits Badge](https://badges.pufler.dev/visits/ezeparziale/hello-streamlit?style=flat-square)]()  
 
 Demo que utiliza datos de estadisticas de NBA
 
 ![image](./img/app.png)
+
+![image](./img/app_2.png)
 
 ## :floppy_disk: Instalación
 
@@ -33,3 +35,11 @@ streamlit run app/nba_app.py
 ```http
 http://localhost:8501
 ```
+
+## :basketball: Funciones
+
+- Listados de estadisticas completas de jugadores
+- Logos de equipos
+- Imagenes de jugadores
+- Comparación entre jugadores
+- Exportacion a CSV
