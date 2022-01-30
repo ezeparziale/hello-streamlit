@@ -1,21 +1,42 @@
 import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
+import gettext
+
+_ = gettext.gettext
+
+# Configuración pagina streamlit
+st.set_page_config(page_title="Demo NBA", layout="wide", page_icon=":basketball:")
+
+# Idioma
+_ = gettext.gettext
+
+idioma = st.sidebar.selectbox(
+    _('Idioma:'),
+    ("es","en"))
+
+if idioma == "en":
+    en = gettext.translation('en', localedir='./app/locales', languages=['en'])
+    en.install()
+    _ = en.gettext
+else:
+    es = gettext.translation('es', localedir='./app/locales', languages=['es'])
+    es.install()
+    _ = es.gettext
+
+
 
 
 # Configuración pandas
 pd.options.display.float_format = "{:,.1f}".format  # Para mostrar con dos decimales
 
-# Configuración pagina streamlit
-st.set_page_config(page_title="NBA stats", layout="wide", page_icon=":basketball:")
-
 # Bara lateral
-st.sidebar.header("Opciones:")
+st.sidebar.header(_("Opciones:"))
 
 # Titulo cabecera
 t1, t2 = st.columns((0.08, 1))
 t1.image("img/logo.png", width=50)
-t2.title("NBA stats")
+t2.title(_("NBA estadísticas"))
 
 # Carga de datos
 @st.cache(allow_output_mutation=True)
@@ -38,35 +59,32 @@ def load_data_teams():
 df_teams = load_data_teams()  # Cargamos los datos de equipos en el dataframe
 df_players = load_data_players()  # Cargamos los datos de jugadores en el dataframe
 
+
 # Selector de Jugador
 sorted_unique_player = df_players.player_name.unique()
 all_players = st.sidebar.checkbox(
-    "Ver todos los jugadores", key="player_name", value=True
+    _("Ver todos los jugadores"), key="player_name", value=True
 )
 
-if all_players:
-    selected_player = st.sidebar.selectbox("JUGADOR", ["Todos"])
-else:
-    selected_player = st.sidebar.selectbox("JUGADOR", sorted_unique_player)
+if not all_players:
+    selected_player = st.sidebar.selectbox(_("JUGADOR 1"), sorted_unique_player)
     compare_players = st.sidebar.checkbox(
-        "Comparar jugadores", key="compare_player", value=False
+        _("Comparar jugadores"), key="compare_player", value=False
     )
 
     if compare_players:
-        selected_player_2 = st.sidebar.selectbox("JUGADOR 2", sorted_unique_player, index=1)
-
-
+        selected_player_2 = st.sidebar.selectbox(_("JUGADOR 2"), sorted_unique_player, index=1)
 
 # Selector de Equipos
 sorted_unique_team = sorted(df_teams.team_abbrev.unique())
-all_teams = st.sidebar.checkbox("Ver todos los equipos", key="team_abbrev", value=True)
+all_teams = st.sidebar.checkbox(_("Ver todos los equipos"), key="team_abbrev", value=True)
 
 if all_teams:
     selected_team = st.sidebar.multiselect(
-        "TEAM", sorted_unique_team, sorted_unique_team
+        _("TEAM"), sorted_unique_team, sorted_unique_team
     )
 else:
-    selected_team = st.sidebar.multiselect("TEAM", sorted_unique_team)
+    selected_team = st.sidebar.multiselect(_("TEAM"), sorted_unique_team)
 
 
 # Filtro el dataframe con los valores seleccionados
@@ -95,15 +113,15 @@ with st.container():
 
 # Subtitulo
 st.write(
-    "Set de datos: "
+    _("Set de datos: ")
     + str(df_selected.shape[0])
-    + " filas y "
+    + _(" filas y ")
     + str(df_selected.shape[1])
-    + " columnas"
+    + _(" columnas")
 )
 
-player_img_size = st.sidebar.slider("JUGADOR TAMAÑO IMAGEN", 50, 200, 80)
-team_img_size = st.sidebar.slider("TEAM TAMAÑO IMAGEN", 50, 130, 60)
+player_img_size = st.sidebar.slider(_("JUGADOR TAMAÑO IMAGEN"), 50, 200, 80)
+team_img_size = st.sidebar.slider(_("TEAM TAMAÑO IMAGEN"), 50, 130, 60)
 
 
 # Mostramos el dataframe
@@ -148,12 +166,11 @@ with st.container():
     ]
 
     columns = st.multiselect(
-        "Columnas",
+        _("Columnas"),
         column_names,
         column_names[:10],
-        help="Seleccione las columnas a visualizar",
+        help=_("Seleccione las columnas a visualizar"),
     )
-
     df_players_img = df_players_img.reindex(columns=columns)
 
     st.write(df_players_img.to_html(escape=False, index=False), unsafe_allow_html=True)
@@ -161,11 +178,11 @@ with st.container():
 
 # Link para descargar el csv
 st.sidebar.download_button(
-    label="Exportar a CSV", 
+    label=_("Exportar a CSV"), 
     data=df_selected.to_csv(index=False).encode("utf-8"), 
     file_name="NBA_stats.csv", 
     mime="text/csv",
-    help="Exporta datos en formato CSV"
+    help=_("Exporta datos en formato CSV")
 )
 
 # Grafico radar

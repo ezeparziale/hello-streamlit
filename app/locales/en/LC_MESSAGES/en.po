@@ -1,0 +1,93 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: 2022-01-30 19:31-0300\n"
+"PO-Revision-Date: 2022-01-30 19:31-0300\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Poedit 3.0.1\n"
+"X-Poedit-Basepath: ../../..\n"
+"X-Poedit-SearchPath-0: nba_app.py\n"
+
+#: nba_app.py:22
+msgid "Idioma:"
+msgstr "Language:"
+
+#: nba_app.py:30
+msgid "Opciones:"
+msgstr "Options:"
+
+#: nba_app.py:35
+msgid "NBA estadísticas"
+msgstr "NBA Stats"
+
+#: nba_app.py:62
+msgid "Ver todos los jugadores"
+msgstr "All players"
+
+#: nba_app.py:66
+msgid "JUGADOR 1"
+msgstr "Player 1"
+
+#: nba_app.py:68
+msgid "Comparar jugadores"
+msgstr "Compare players"
+
+#: nba_app.py:72
+msgid "JUGADOR 2"
+msgstr "Player 2"
+
+#: nba_app.py:76
+msgid "Ver todos los equipos"
+msgstr "All teams"
+
+#: nba_app.py:80 nba_app.py:83
+msgid "TEAM"
+msgstr "Team"
+
+#: nba_app.py:112
+msgid "Set de datos: "
+msgstr "Data set: "
+
+#: nba_app.py:114
+msgid " filas y "
+msgstr " rows and "
+
+#: nba_app.py:116
+msgid " columnas"
+msgstr " columns"
+
+#: nba_app.py:119
+msgid "JUGADOR TAMAÑO IMAGEN"
+msgstr "Image size player"
+
+#: nba_app.py:120
+msgid "TEAM TAMAÑO IMAGEN"
+msgstr "Image size team"
+
+#: nba_app.py:165
+msgid "Columnas"
+msgstr "Columns"
+
+#: nba_app.py:168
+msgid "Seleccione las columnas a visualizar"
+msgstr "Choose yours columns"
+
+#: nba_app.py:177
+msgid "Exportar a CSV"
+msgstr "Export to CSV"
+
+#: nba_app.py:181
+msgid "Exporta datos en formato CSV"
+msgstr "Export all data in CSV format"
+
+#~ msgid "JUGADOR"
+#~ msgstr "Player"
+
+#~ msgid "Todos"
+#~ msgstr "Alls"
