@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-01-30 19:31-0300\n"
-"PO-Revision-Date: 2022-01-30 19:31-0300\n"
+"POT-Creation-Date: 2022-01-31 22:21-0300\n"
+"PO-Revision-Date: 2022-01-31 22:22-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -14,77 +14,107 @@ msgstr ""
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SearchPath-0: nba_app.py\n"
 
-#: nba_app.py:22
-msgid "Idioma:"
-msgstr "Language:"
-
-#: nba_app.py:30
+#: nba_app.py:38
 msgid "Opciones:"
 msgstr "Options:"
 
-#: nba_app.py:35
+#: nba_app.py:43
 msgid "NBA estadísticas"
 msgstr "NBA Stats"
 
-#: nba_app.py:62
+#: nba_app.py:70
 msgid "Ver todos los jugadores"
 msgstr "All players"
 
-#: nba_app.py:66
+#: nba_app.py:74
 msgid "JUGADOR 1"
 msgstr "Player 1"
 
-#: nba_app.py:68
+#: nba_app.py:76
 msgid "Comparar jugadores"
 msgstr "Compare players"
 
-#: nba_app.py:72
+#: nba_app.py:80
 msgid "JUGADOR 2"
 msgstr "Player 2"
 
-#: nba_app.py:76
+#: nba_app.py:84
 msgid "Ver todos los equipos"
 msgstr "All teams"
 
-#: nba_app.py:80 nba_app.py:83
-msgid "TEAM"
-msgstr "Team"
+#: nba_app.py:88 nba_app.py:91
+msgid "Equipos"
+msgstr "Teams"
 
-#: nba_app.py:112
+#: nba_app.py:120
 msgid "Set de datos: "
 msgstr "Data set: "
 
-#: nba_app.py:114
+#: nba_app.py:122
 msgid " filas y "
 msgstr " rows and "
 
-#: nba_app.py:116
+#: nba_app.py:124
 msgid " columnas"
 msgstr " columns"
 
-#: nba_app.py:119
-msgid "JUGADOR TAMAÑO IMAGEN"
-msgstr "Image size player"
-
-#: nba_app.py:120
-msgid "TEAM TAMAÑO IMAGEN"
-msgstr "Image size team"
-
-#: nba_app.py:165
-msgid "Columnas"
-msgstr "Columns"
-
-#: nba_app.py:168
-msgid "Seleccione las columnas a visualizar"
-msgstr "Choose yours columns"
-
-#: nba_app.py:177
+#: nba_app.py:129
 msgid "Exportar a CSV"
 msgstr "Export to CSV"
 
-#: nba_app.py:181
+#: nba_app.py:133
 msgid "Exporta datos en formato CSV"
 msgstr "Export all data in CSV format"
+
+#: nba_app.py:137 nba_app.py:152
+msgid "Imagen+Nombre"
+msgstr "Image+Name"
+
+#: nba_app.py:137 nba_app.py:152
+msgid "Solo imagen"
+msgstr "Only image"
+
+#: nba_app.py:137 nba_app.py:152
+msgid "Solo nombre"
+msgstr "Only name"
+
+#: nba_app.py:143
+msgid "Personalización jugador"
+msgstr "Player Customization"
+
+#: nba_app.py:149
+msgid "JUGADOR TAMAÑO IMAGEN"
+msgstr "Image size player"
+
+#: nba_app.py:158
+msgid "Personalización Equipo"
+msgstr "Team Customization"
+
+#: nba_app.py:164
+msgid "TEAM TAMAÑO IMAGEN"
+msgstr "Image size team"
+
+#: nba_app.py:209 nba_app.py:221
+msgid "Jugador"
+msgstr "Player"
+
+#: nba_app.py:210 nba_app.py:221
+msgid "Equipo"
+msgstr "Team"
+
+#: nba_app.py:215
+msgid "Columnas"
+msgstr "Columns"
+
+#: nba_app.py:218
+msgid "Seleccione las columnas a visualizar"
+msgstr "Choose yours columns"
+
+#~ msgid "Idioma:"
+#~ msgstr "Language:"
+
+#~ msgid "TEAM"
+#~ msgstr "Team"
 
 #~ msgid "JUGADOR"
 #~ msgstr "Player"
