@@ -11,9 +11,15 @@ st.set_page_config(page_title="Demo NBA", layout="wide", page_icon=":basketball:
 # Idioma
 _ = gettext.gettext
 
+CHOICES = {"en": "English", "es": "Spanish"}
+
+def format_func(option):
+    return CHOICES[option]
+
 idioma = st.sidebar.selectbox(
-    _('Idioma:'),
-    ("es","en"))
+    "",
+    options=list(CHOICES.keys()), 
+    format_func=format_func)
 
 if idioma == "en":
     en = gettext.translation('en', localedir='./app/locales', languages=['en'])
@@ -23,8 +29,6 @@ else:
     es = gettext.translation('es', localedir='./app/locales', languages=['es'])
     es.install()
     _ = es.gettext
-
-
 
 
 # Configuración pandas
@@ -81,10 +85,10 @@ all_teams = st.sidebar.checkbox(_("Ver todos los equipos"), key="team_abbrev", v
 
 if all_teams:
     selected_team = st.sidebar.multiselect(
-        _("TEAM"), sorted_unique_team, sorted_unique_team
+        _("Equipos"), sorted_unique_team, sorted_unique_team
     )
 else:
-    selected_team = st.sidebar.multiselect(_("TEAM"), sorted_unique_team)
+    selected_team = st.sidebar.multiselect(_("Equipos"), sorted_unique_team)
 
 
 # Filtro el dataframe con los valores seleccionados
@@ -120,23 +124,62 @@ st.write(
     + _(" columnas")
 )
 
-player_img_size = st.sidebar.slider(_("JUGADOR TAMAÑO IMAGEN"), 50, 200, 80)
-team_img_size = st.sidebar.slider(_("TEAM TAMAÑO IMAGEN"), 50, 130, 60)
+# Link para descargar el csv
+st.sidebar.download_button(
+    label=_("Exportar a CSV"), 
+    data=df_selected.to_csv(index=False).encode("utf-8"), 
+    file_name="NBA_stats.csv", 
+    mime="text/csv",
+    help=_("Exporta datos en formato CSV")
+)
 
+# Personalización tabla
+CHOICES_PLAYER = { 0: _("Imagen+Nombre"), 1: _("Solo imagen"), 2: _("Solo nombre")}
+
+def format_func_player(option):
+    return CHOICES_PLAYER[option]
+
+choices_player = st.sidebar.selectbox(
+    _("Personalización jugador"),
+    options=list(CHOICES_PLAYER.keys()), 
+    format_func=format_func_player,
+    key="choices_player")
+
+if choices_player in [0,1]:
+    player_img_size = st.sidebar.slider(_("JUGADOR TAMAÑO IMAGEN"), 50, 200, 80)
+
+
+CHOICES_TEAM = { 0: _("Imagen+Nombre"), 1: _("Solo imagen"), 2: _("Solo nombre")}
+
+def format_func_team(option):
+    return CHOICES_TEAM[option]
+
+choices_team = st.sidebar.selectbox(
+    _("Personalización Equipo"),
+    options=list(CHOICES_TEAM.keys()), 
+    format_func=format_func_team,
+    key="choices_team")
+
+if choices_team in [0,1]:
+    team_img_size = st.sidebar.slider(_("TEAM TAMAÑO IMAGEN"), 50, 130, 60)
 
 # Mostramos el dataframe
 with st.container():
     df_players_img = df_selected.copy()
     df_players_img["player_img_url"] = [
-        "<img src='"
-        + r.player_img
-        + f"""' style='display:block;margin-left:auto;margin-right:auto;width:{player_img_size}px;border:0;'>"""
+        f"<img src='{r.player_img}' style='display:block;margin-left:auto;margin-right:auto;width:{player_img_size}px;border:0;'>" 
+            if choices_player==1 else f"<div class='column' align=center> {r.player_name} </div>" 
+                if choices_player==2 else 
+                    f"<img src='{r.player_img}' style='display:block;margin-left:auto;margin-right:auto;width:{player_img_size}px;border:0;'>" 
+                        + f"<div class='column' align=center> {r.player_name} </div>" 
         for ir, r in df_players_img.iterrows()
     ]
     df_players_img["team_img_small_url"] = [
-        "<img src='"
-        + r.team_img_small
-        + f"""' style='display:block;margin-left:auto;margin-right:auto;width:{team_img_size}px;border:0;'>"""
+        f"<img src='{r.team_img_small}' style='display:block;margin-left:auto;margin-right:auto;width:{team_img_size}px;border:0;'>" 
+            if choices_team==1 else f"<div class='column' align=center> {r.team_abbrev} </div>" 
+                if choices_team==2 else 
+                    f"<img src='{r.team_img_small}' style='display:block;margin-left:auto;margin-right:auto;width:{team_img_size}px;border:0;'>" 
+                        + f"<div class='column' align=center> {r.team_abbrev} </div>" 
         for ir, r in df_players_img.iterrows()
     ]
 
@@ -145,8 +188,6 @@ with st.container():
     )
     column_names = [
         "player_img_url",
-        "player_name",
-        "team_abbrev",
         "team_img_small_url",
         "hgt",
         "stre",
@@ -165,25 +206,23 @@ with st.container():
         "reb",
     ]
 
+    column_names[0] = _("Jugador")
+    column_names[1] = _("Equipo")
+
+    df_players_img_small = df_players_img.copy()
+
     columns = st.multiselect(
         _("Columnas"),
         column_names,
         column_names[:10],
         help=_("Seleccione las columnas a visualizar"),
     )
-    df_players_img = df_players_img.reindex(columns=columns)
 
-    st.write(df_players_img.to_html(escape=False, index=False), unsafe_allow_html=True)
+    df_players_img_small.rename(columns={"player_img_url": _("Jugador"), "team_img_small_url": _("Equipo")}, inplace=True)
+    
+    df_players_img_small = df_players_img_small.reindex(columns=columns)
 
-
-# Link para descargar el csv
-st.sidebar.download_button(
-    label=_("Exportar a CSV"), 
-    data=df_selected.to_csv(index=False).encode("utf-8"), 
-    file_name="NBA_stats.csv", 
-    mime="text/csv",
-    help=_("Exporta datos en formato CSV")
-)
+    st.write(df_players_img_small.to_html(escape=False, index=False), unsafe_allow_html=True)
 
 # Grafico radar
 if all_players is False:
