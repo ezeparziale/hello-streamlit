@@ -44,5 +44,6 @@ http://localhost:8501
 - Comparación entre jugadores
 - Selector de imagen o texto en jugador
 - Selector de imagen o texto en equipo
-- Ajuste de tamñao de imagenes
+- Ajuste de tamaño de imagenes
+- Selector de idioma Español e Ingles
 - Exportacion a CSV
