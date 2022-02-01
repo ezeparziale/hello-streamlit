@@ -42,4 +42,7 @@ http://localhost:8501
 - Logos de equipos
 - Imagenes de jugadores
 - Comparación entre jugadores
+- Selector de imagen o texto en jugador
+- Selector de imagen o texto en equipo
+- Ajuste de tamñao de imagenes
 - Exportacion a CSV
