@@ -4,9 +4,9 @@
 
 Demo que utiliza datos de estadisticas de NBA
 
-![image](./img/app.png)
+![image](app/img/app.png)
 
-![image](./img/app_2.png)
+![image](app/img/app_2.png)
 
 ## :floppy_disk: Instalación
 
@@ -46,4 +46,5 @@ http://localhost:8501
 - Selector de imagen o texto en equipo
 - Ajuste de tamaño de imagenes
 - Selector de idioma Español e Ingles
-- Exportacion a CSV
+- Exportación a CSV
+- Publicación en streamlit cloud
