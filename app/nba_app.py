@@ -226,6 +226,11 @@ st.write("")
 # Grafico radar
 if all_players is False:
 
+    option_color_team_1 = st.sidebar.selectbox(
+        _("Colores del equipo 1"),
+        ("color_0", "color_1", "color_2"))
+
+
     columns = st.multiselect(
         _("Caracteristicas del jugador"),
         column_names[2:],
@@ -235,7 +240,7 @@ if all_players is False:
 
     fig = go.Figure()
     team_1 = df_players_img["team_abbrev"].values.tolist()[0]
-    color_1 = df_teams[df_teams.team_abbrev == team_1]["color_0"].values.tolist()[0]
+    color_1 = df_teams[df_teams.team_abbrev == team_1][option_color_team_1].values.tolist()[0]
     ratings = columns  # ["hgt","stre","spd","jmp","endu","ins","reb"]
     df_player_1 = pd.DataFrame(
         dict(
@@ -251,11 +256,16 @@ if all_players is False:
         name=df_players_img["player_name"].values.tolist()[0]
     ))
     if compare_players:
+        option_color_team_2 = st.sidebar.selectbox(
+            _("Colores del equipo 2"),
+            ("color_0", "color_1", "color_2"))
+
+
         team_2 = df_players_img["team_abbrev"].values.tolist()[1]
-        if team_1 ==  team_2:
+        if team_1 ==  team_2 and option_color_team_1 == option_color_team_2:
             color_2 = df_teams[df_teams.team_abbrev == team_2]["color_2"].values.tolist()[0]
         else:
-            color_2 = df_teams[df_teams.team_abbrev == team_2]["color_0"].values.tolist()[0]
+            color_2 = df_teams[df_teams.team_abbrev == team_2][option_color_team_2].values.tolist()[0]
         df_player_2 = pd.DataFrame(
             dict(
                 r=df_players_img[ratings].values.tolist()[1],
