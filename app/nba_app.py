@@ -3,6 +3,7 @@ import pandas as pd
 import plotly.graph_objects as go
 import gettext
 
+
 _ = gettext.gettext
 
 # Configuración pagina streamlit
@@ -22,11 +23,11 @@ idioma = st.sidebar.selectbox(
     format_func=format_func)
 
 if idioma == "en":
-    en = gettext.translation('en', localedir='./app/locales', languages=['en'])
+    en = gettext.translation('en', localedir='app/locales', languages=['en'])
     en.install()
     _ = en.gettext
 else:
-    es = gettext.translation('es', localedir='./app/locales', languages=['es'])
+    es = gettext.translation('es', localedir='app/locales', languages=['es'])
     es.install()
     _ = es.gettext
 
@@ -39,13 +40,13 @@ st.sidebar.header(_("Opciones:"))
 
 # Titulo cabecera
 t1, t2 = st.columns((0.08, 1))
-t1.image("img/logo.png", width=50)
+t1.image("app/img/logo.png", width=50)
 t2.title(_("NBA estadísticas"))
 
 # Carga de datos
 @st.cache(allow_output_mutation=True)
 def load_data_players():
-    df = pd.read_csv("data/players.csv")
+    df = pd.read_csv("app/data/players.csv")
     filter_col = ["conference_id", "division_id", "region", "team_name", "team_img"]
     df = df.drop(filter_col, axis=1)
     # df = df.rename(columns={"FULL_NAME": "JUGADOR"})
@@ -57,7 +58,7 @@ def load_data_players():
 
 @st.cache(allow_output_mutation=True)
 def load_data_teams():
-    return pd.read_csv("data/teams.csv")
+    return pd.read_csv("app/data/teams.csv")
 
 
 df_teams = load_data_teams()  # Cargamos los datos de equipos en el dataframe
@@ -109,7 +110,7 @@ else:
 teams = sorted(df_teams.team_abbrev.unique())
 teams_list = []
 for team in teams:
-    path_team = "./img/teams/" + team + ".png"
+    path_team = "app/img/teams/" + team + ".png"
     teams_list.append(path_team)
 
 with st.container():
