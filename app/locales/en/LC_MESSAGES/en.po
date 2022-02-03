@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-02-03 19:56-0300\n"
-"PO-Revision-Date: 2022-02-03 19:56-0300\n"
+"POT-Creation-Date: 2022-02-03 20:39-0300\n"
+"PO-Revision-Date: 2022-02-03 20:41-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -94,50 +94,62 @@ msgstr "Team Customization"
 msgid "TEAM TAMAÑO IMAGEN"
 msgstr "Image size team"
 
-#: nba_app.py:210 nba_app.py:217
+#: nba_app.py:213 nba_app.py:221
 msgid "Jugador"
 msgstr "Player"
 
-#: nba_app.py:211 nba_app.py:217
+#: nba_app.py:214 nba_app.py:222
 msgid "Equipo"
 msgstr "Team"
 
-#: nba_app.py:230
+#: nba_app.py:223
+msgid "Posición"
+msgstr "Position"
+
+#: nba_app.py:224
+msgid "Altura"
+msgstr "Height"
+
+#: nba_app.py:225
+msgid "Peso"
+msgstr "Weight"
+
+#: nba_app.py:239
 msgid "Colores del equipo 1"
 msgstr "Team 1 colors"
 
-#: nba_app.py:235
+#: nba_app.py:244
 msgid "Caracteristicas del jugador"
 msgstr "Player profile"
 
-#: nba_app.py:238
+#: nba_app.py:247
 msgid "Seleccione las caracteristicas a comparar"
 msgstr "Choose yours features"
 
-#: nba_app.py:260
+#: nba_app.py:269
 msgid "Colores del equipo 2"
 msgstr "Team 2 colors"
 
-#: nba_app.py:289
+#: nba_app.py:298
 msgid "#### Referencias:"
 msgstr "#### References:"
 
-#: nba_app.py:291
+#: nba_app.py:300
 msgid "altura, que influye en casi todo"
 msgstr "height, which factors into pretty much everything"
 
-#: nba_app.py:292
+#: nba_app.py:301
 msgid ""
 "fuerza, que influye en la defensa, el rebote y la anotación en el poste bajo"
 msgstr "strength, which influences defense, rebounding, and low post scoring"
 
-#: nba_app.py:293
+#: nba_app.py:302
 msgid ""
 "velocidad, que influye en el manejo del balón, contraataques rápidos y "
 "defensa"
 msgstr "speed, which influences ball handling, fast breaking, and defense"
 
-#: nba_app.py:294
+#: nba_app.py:303
 msgid ""
 "salto, que influye en la finalización en el aro, el rebote, el bloqueo y la "
 "defensa"
@@ -145,50 +157,50 @@ msgstr ""
 "jumping, which influences finishing at the rim, rebounding, blocking shots, "
 "and defense"
 
-#: nba_app.py:295
+#: nba_app.py:304
 msgid ""
 "resistencia, que determina qué tan rápido se degradan las habilidades de un "
 "jugador cuando se cansa"
 msgstr ""
 "endurance, which governs how fast a player’s skills degrade as he gets tired"
 
-#: nba_app.py:296
+#: nba_app.py:305
 msgid "anotación en el poste bajo"
 msgstr "low post scoring"
 
-#: nba_app.py:297
+#: nba_app.py:306
 msgid "volcadas / bandejas"
 msgstr "dunking/layups"
 
-#: nba_app.py:298
+#: nba_app.py:307
 msgid "lanzamiento de tiros libres"
 msgstr "free throw shooting"
 
-#: nba_app.py:299
+#: nba_app.py:308
 msgid "habilidad de tiro en suspensión de 2 puntos"
 msgstr "2 point jump shot ability"
 
-#: nba_app.py:300
+#: nba_app.py:309
 msgid "tiro de 3 puntos"
 msgstr "3 point shooting"
 
-#: nba_app.py:301
+#: nba_app.py:310
 msgid "coeficiente intelectual ofensivo"
 msgstr "offensive IQ"
 
-#: nba_app.py:302
+#: nba_app.py:311
 msgid "coeficiente intelectual defensivo"
 msgstr "defensive IQ"
 
-#: nba_app.py:303
+#: nba_app.py:312
 msgid "regatear"
 msgstr "dribbling"
 
-#: nba_app.py:304
+#: nba_app.py:313
 msgid "pasando"
 msgstr "passing"
 
-#: nba_app.py:305
+#: nba_app.py:314
 msgid "rebote"
 msgstr "rebounding"
 
