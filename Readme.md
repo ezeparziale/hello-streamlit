@@ -49,3 +49,4 @@ http://localhost:8501
 - Selector de idioma Español e Ingles
 - Exportación a CSV
 - Publicación en streamlit cloud
+- Selector de color en radar en función de los colores del equipo
