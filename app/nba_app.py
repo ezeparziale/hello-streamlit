@@ -212,25 +212,31 @@ with st.container():
 
     df_players_img_small = df_players_img.copy()
 
-    columns = st.multiselect(
-        _("Columnas"),
-        column_names,
-        column_names[:10],
-        help=_("Seleccione las columnas a visualizar"),
-    )
+
 
     df_players_img_small.rename(columns={"player_img_url": _("Jugador"), "team_img_small_url": _("Equipo")}, inplace=True)
     
-    df_players_img_small = df_players_img_small.reindex(columns=columns)
+    df_players_img_small = df_players_img_small.reindex(columns=column_names)
 
     st.write(df_players_img_small.to_html(escape=False, index=False), unsafe_allow_html=True)
 
+# Linea entre tabla y radar
+st.write("")
+
 # Grafico radar
 if all_players is False:
+
+    columns = st.multiselect(
+        _("Caracteristicas del jugador"),
+        column_names[2:],
+        column_names[2:7],
+        help=_("Seleccione las caracteristicas a comparar"),
+    )
+
     fig = go.Figure()
     team_1 = df_players_img["team_abbrev"].values.tolist()[0]
     color_1 = df_teams[df_teams.team_abbrev == team_1]["color_0"].values.tolist()[0]
-    ratings = ["hgt","stre","spd","jmp","endu","ins"]
+    ratings = columns  # ["hgt","stre","spd","jmp","endu","ins","reb"]
     df_player_1 = pd.DataFrame(
         dict(
             r=df_players_img[ratings].values.tolist()[0],
@@ -269,3 +275,22 @@ if all_players is False:
     fig.update_polars(radialaxis_showgrid=False)
 
     st.plotly_chart(fig)
+
+st.markdown( _("#### Referencias:"))
+st.markdown(
+    "hgt: " + _("altura, que influye en casi todo")  + " \n" +
+    "stre: " + _("fuerza, que influye en la defensa, el rebote y la anotación en el poste bajo")  + "  \n" +
+    "spd: " + _("velocidad, que influye en el manejo del balón, contraataques rápidos y defensa")  + "  \n" +
+    "jmp: " + _("salto, que influye en la finalización en el aro, el rebote, el bloqueo y la defensa")  + "  \n" +
+    "endu: " + _("resistencia, que determina qué tan rápido se degradan las habilidades de un jugador cuando se cansa")  + "  \n" +
+    "ins: " + _("anotación en el poste bajo")  + "  \n" +
+    "dnk: " + _("volcadas / bandejas")  + "  \n" +
+    "ft: " + _("lanzamiento de tiros libres")  + "  \n" +
+    "fg: " + _("habilidad de tiro en suspensión de 2 puntos")  + "  \n" +
+    "tp: " + _("tiro de 3 puntos")  + "  \n" +
+    "oiq: " + _("coeficiente intelectual ofensivo")  + "  \n" +
+    "diq: " + _("coeficiente intelectual defensivo")  + "  \n" +
+    "drb: " + _("regatear")  + "  \n" +
+    "pd: " + _("pasando")  + "  \n" +
+    "reb: " + _("rebote")
+)
