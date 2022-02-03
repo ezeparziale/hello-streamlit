@@ -190,6 +190,9 @@ with st.container():
     column_names = [
         "player_img_url",
         "team_img_small_url",
+        "pos",
+        "height",
+        "weight",
         "hgt",
         "stre",
         "spd",
@@ -214,7 +217,13 @@ with st.container():
 
 
 
-    df_players_img_small.rename(columns={"player_img_url": _("Jugador"), "team_img_small_url": _("Equipo")}, inplace=True)
+    df_players_img_small.rename(columns={
+        "player_img_url": _("Jugador"), 
+        "team_img_small_url": _("Equipo"),
+        "pos": _("Posición"),
+        "height": _("Altura"),
+        "weight": _("Peso")
+        }, inplace=True)
     
     df_players_img_small = df_players_img_small.reindex(columns=column_names)
 
@@ -233,8 +242,8 @@ if all_players is False:
 
     columns = st.multiselect(
         _("Caracteristicas del jugador"),
-        column_names[2:],
-        column_names[2:7],
+        column_names[5:],
+        column_names[5:10],
         help=_("Seleccione las caracteristicas a comparar"),
     )
 
