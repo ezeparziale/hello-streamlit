@@ -220,19 +220,21 @@ with st.container():
 
     column_names[0] = _("Jugador")
     column_names[1] = _("Equipo")
+    column_names[2] = _("Posicion")
+    column_names[3] = _("Altura")
+    column_names[4] = _("Peso")
 
     df_players_img_small = df_players_img.copy()
 
     df_players_img_small.rename(columns={
         "player_img_url": _("Jugador"), 
         "team_img_small_url": _("Equipo"),
-        "pos": _("Posición"),
+        "pos": _("Posicion"),
         "height": _("Altura"),
-        "weight": _("Peso")
+        "weight": _("Peso"),
         }, inplace=True)
     
     df_players_img_small = df_players_img_small.reindex(columns=column_names)
-
     st.write(df_players_img_small.to_html(escape=False, index=False), unsafe_allow_html=True)
 
 
