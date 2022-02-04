@@ -231,7 +231,7 @@ with st.container():
 
     column_names[0] = _("Jugador")
     column_names[1] = _("Equipo")
-    column_names[2] = _("Posicion")
+    column_names[2] = _("Posición")
     column_names[3] = _("Altura")
     column_names[4] = _("Peso")
 
@@ -241,7 +241,7 @@ with st.container():
         columns={
             "player_img_url": _("Jugador"),
             "team_img_small_url": _("Equipo"),
-            "pos": _("Posicion"),
+            "pos": _("Posición"),
             "height": _("Altura"),
             "weight": _("Peso"),
         },
