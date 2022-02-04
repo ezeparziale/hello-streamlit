@@ -9,6 +9,7 @@ _ = gettext.gettext
 # Configuración pagina streamlit
 st.set_page_config(page_title="Demo NBA", layout="wide", page_icon=":basketball:")
 
+
 # Idioma
 _ = gettext.gettext
 
@@ -23,11 +24,11 @@ idioma = st.sidebar.selectbox(
     format_func=format_func)
 
 if idioma == "en":
-    en = gettext.translation('en', localedir='app/locales', languages=['en'])
+    en = gettext.translation("en", localedir="app/locales", languages=["en"])
     en.install()
     _ = en.gettext
 else:
-    es = gettext.translation('es', localedir='app/locales', languages=['es'])
+    es = gettext.translation("es", localedir="app/locales", languages=["es"])
     es.install()
     _ = es.gettext
 
@@ -35,13 +36,16 @@ else:
 # Configuración pandas
 pd.options.display.float_format = "{:,.1f}".format  # Para mostrar con dos decimales
 
+
 # Bara lateral
 st.sidebar.header(_("Opciones:"))
+
 
 # Titulo cabecera
 t1, t2 = st.columns((0.08, 1))
 t1.image("app/img/logo.png", width=50)
 t2.title(_("NBA estadísticas"))
+
 
 # Carga de datos
 @st.cache(allow_output_mutation=True)
@@ -59,7 +63,6 @@ def load_data_players():
 @st.cache(allow_output_mutation=True)
 def load_data_teams():
     return pd.read_csv("app/data/teams.csv")
-
 
 df_teams = load_data_teams()  # Cargamos los datos de equipos en el dataframe
 df_players = load_data_players()  # Cargamos los datos de jugadores en el dataframe
@@ -80,6 +83,7 @@ if not all_players:
     if compare_players:
         selected_player_2 = st.sidebar.selectbox(_("JUGADOR 2"), sorted_unique_player, index=1)
 
+
 # Selector de Equipos
 sorted_unique_team = sorted(df_teams.team_abbrev.unique())
 all_teams = st.sidebar.checkbox(_("Ver todos los equipos"), key="team_abbrev", value=True)
@@ -97,7 +101,7 @@ if all_players:
     df_selected = df_players[
         (
             df_players.team_abbrev.isin(selected_team)
-        )  # & (df_players.POS.isin(selected_pos))
+        )
     ]
 else:
     if compare_players:
@@ -116,6 +120,7 @@ for team in teams:
 with st.container():
     st.image(teams_list, width=45, caption=teams)
 
+
 # Subtitulo
 st.write(
     _("Set de datos: ")
@@ -125,6 +130,7 @@ st.write(
     + _(" columnas")
 )
 
+
 # Link para descargar el csv
 st.sidebar.download_button(
     label=_("Exportar a CSV"), 
@@ -133,6 +139,7 @@ st.sidebar.download_button(
     mime="text/csv",
     help=_("Exporta datos en formato CSV")
 )
+
 
 # Personalización tabla
 CHOICES_PLAYER = { 0: _("Imagen+Nombre"), 1: _("Solo imagen"), 2: _("Solo nombre")}
@@ -163,6 +170,7 @@ choices_team = st.sidebar.selectbox(
 
 if choices_team in [0,1]:
     team_img_size = st.sidebar.slider(_("TEAM TAMAÑO IMAGEN"), 50, 130, 60)
+
 
 # Mostramos el dataframe
 with st.container():
@@ -215,8 +223,6 @@ with st.container():
 
     df_players_img_small = df_players_img.copy()
 
-
-
     df_players_img_small.rename(columns={
         "player_img_url": _("Jugador"), 
         "team_img_small_url": _("Equipo"),
@@ -229,16 +235,16 @@ with st.container():
 
     st.write(df_players_img_small.to_html(escape=False, index=False), unsafe_allow_html=True)
 
+
 # Linea entre tabla y radar
 st.write("")
 
+
 # Grafico radar
 if all_players is False:
-
     option_color_team_1 = st.sidebar.selectbox(
         _("Colores del equipo 1"),
         ("color_0", "color_1", "color_2"))
-
 
     columns = st.multiselect(
         _("Caracteristicas del jugador"),
@@ -260,7 +266,7 @@ if all_players is False:
     fig.add_trace(go.Scatterpolar(
         r=df_player_1["r"],
         theta=ratings,
-        fill='toself',
+        fill="toself",
         marker = dict(color = color_1),
         name=df_players_img["player_name"].values.tolist()[0]
     ))
@@ -268,7 +274,6 @@ if all_players is False:
         option_color_team_2 = st.sidebar.selectbox(
             _("Colores del equipo 2"),
             ("color_0", "color_1", "color_2"))
-
 
         team_2 = df_players_img["team_abbrev"].values.tolist()[1]
         if team_1 ==  team_2 and option_color_team_1 == option_color_team_2:
@@ -295,6 +300,8 @@ if all_players is False:
 
     st.plotly_chart(fig)
 
+
+# Referencias
 st.markdown( _("#### Referencias:"))
 st.markdown(
     "hgt: " + _("altura, que influye en casi todo")  + " \n" +
