@@ -9,6 +9,10 @@ Demo que utiliza datos de estadisticas de NBA
 
 ![image](app/img/app_2.png)
 
+![image](app/img/app_3.png)
+
+![image](app/img/app_4.png)
+
 ## :floppy_disk: Instalación
 
 ```shell
@@ -50,3 +54,6 @@ http://localhost:8501
 - Exportación a CSV
 - Publicación en streamlit cloud
 - Selector de color en radar en función de los colores del equipo
+- Selector de vista Jugardor
+- Selector de vista Equipo
+- Vista equipo con mapa
