@@ -49,7 +49,7 @@ mode_view = st.sidebar.selectbox(
     format_func=format_func_mode,
     key="choices_mode",
 )
-
+print(mode_view)
 # Bara lateral
 st.sidebar.header(_("Opciones:"))
 
@@ -97,7 +97,7 @@ with st.container():
 
 CHOICES_TEAM = {0: _("Imagen+Nombre"), 1: _("Solo imagen"), 2: _("Solo nombre")}
 
-if mode_view == "Players":
+if mode_view == 0:
     # Selector de Jugador
     sorted_unique_player = df_players.player_name.unique()
     all_players = st.sidebar.checkbox(
@@ -365,7 +365,7 @@ if mode_view == "Players":
         "reb: " + _("rebote")
     )
 
-if mode_view == "Teams":
+if mode_view == 1:
     # Selector de Equipos
     sorted_unique_team = sorted(df_teams.team_abbrev.unique())
     all_teams = st.sidebar.checkbox(
