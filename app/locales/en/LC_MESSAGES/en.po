@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: \n"
-"POT-Creation-Date: 2022-02-09 20:38-0300\n"
-"PO-Revision-Date: 2022-02-09 20:38-0300\n"
+"POT-Creation-Date: 2022-02-09 22:10-0300\n"
+"PO-Revision-Date: 2022-02-09 22:10-0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en\n"
@@ -14,146 +14,150 @@ msgstr ""
 "X-Poedit-Basepath: ../../..\n"
 "X-Poedit-SearchPath-0: nba_app.py\n"
 
-#: nba_app.py:39
+#: nba_app.py:41
 msgid "Vista"
 msgstr "View"
 
-#: nba_app.py:42
-msgid "Opciones:"
-msgstr "Options:"
+#: nba_app.py:41
+msgid "Jugadores"
+msgstr "Players"
 
-#: nba_app.py:47
-msgid "NBA estadísticas"
-msgstr "NBA Stats"
-
-#: nba_app.py:86 nba_app.py:155
-msgid "Imagen+Nombre"
-msgstr "Image+Name"
-
-#: nba_app.py:86 nba_app.py:155
-msgid "Solo imagen"
-msgstr "Only image"
-
-#: nba_app.py:86 nba_app.py:155
-msgid "Solo nombre"
-msgstr "Only name"
-
-#: nba_app.py:92
-msgid "Ver todos los jugadores"
-msgstr "All players"
-
-#: nba_app.py:96
-msgid "JUGADOR 1"
-msgstr "Player 1"
-
-#: nba_app.py:98
-msgid "Comparar jugadores"
-msgstr "Compare players"
-
-#: nba_app.py:103
-msgid "JUGADOR 2"
-msgstr "Player 2"
-
-#: nba_app.py:110 nba_app.py:360
-msgid "Ver todos los equipos"
-msgstr "All teams"
-
-#: nba_app.py:115 nba_app.py:118 nba_app.py:382
+#: nba_app.py:41 nba_app.py:117 nba_app.py:120 nba_app.py:384
 msgid "Equipos"
 msgstr "Teams"
 
-#: nba_app.py:136
+#: nba_app.py:44
+msgid "Opciones:"
+msgstr "Options:"
+
+#: nba_app.py:49
+msgid "NBA estadísticas"
+msgstr "NBA Stats"
+
+#: nba_app.py:88 nba_app.py:157
+msgid "Imagen+Nombre"
+msgstr "Image+Name"
+
+#: nba_app.py:88 nba_app.py:157
+msgid "Solo imagen"
+msgstr "Only image"
+
+#: nba_app.py:88 nba_app.py:157
+msgid "Solo nombre"
+msgstr "Only name"
+
+#: nba_app.py:94
+msgid "Ver todos los jugadores"
+msgstr "All players"
+
+#: nba_app.py:98
+msgid "JUGADOR 1"
+msgstr "Player 1"
+
+#: nba_app.py:100
+msgid "Comparar jugadores"
+msgstr "Compare players"
+
+#: nba_app.py:105
+msgid "JUGADOR 2"
+msgstr "Player 2"
+
+#: nba_app.py:112 nba_app.py:362
+msgid "Ver todos los equipos"
+msgstr "All teams"
+
+#: nba_app.py:138
 msgid "Set de datos: "
 msgstr "Data set: "
 
-#: nba_app.py:138
+#: nba_app.py:140
 msgid " filas y "
 msgstr " rows and "
 
-#: nba_app.py:140
+#: nba_app.py:142
 msgid " columnas"
 msgstr " columns"
 
-#: nba_app.py:146
+#: nba_app.py:148
 msgid "Exportar a CSV"
 msgstr "Export to CSV"
 
-#: nba_app.py:150
+#: nba_app.py:152
 msgid "Exporta datos en formato CSV"
 msgstr "Export all data in CSV format"
 
-#: nba_app.py:163
+#: nba_app.py:165
 msgid "Personalización jugador"
 msgstr "Player Customization"
 
-#: nba_app.py:170
+#: nba_app.py:172
 msgid "JUGADOR TAMAÑO IMAGEN"
 msgstr "Image size player"
 
-#: nba_app.py:178 nba_app.py:390
+#: nba_app.py:180 nba_app.py:392
 msgid "Personalización Equipo"
 msgstr "Team Customization"
 
-#: nba_app.py:185 nba_app.py:397
+#: nba_app.py:187 nba_app.py:399
 msgid "TEAM TAMAÑO IMAGEN"
 msgstr "Image size team"
 
-#: nba_app.py:236 nba_app.py:246
+#: nba_app.py:238 nba_app.py:248
 msgid "Jugador"
 msgstr "Player"
 
-#: nba_app.py:237 nba_app.py:247 nba_app.py:436 nba_app.py:447
+#: nba_app.py:239 nba_app.py:249 nba_app.py:438 nba_app.py:449 nba_app.py:469
 msgid "Equipo"
 msgstr "Team"
 
-#: nba_app.py:238 nba_app.py:248
+#: nba_app.py:240 nba_app.py:250
 msgid "Posición"
 msgstr "Position"
 
-#: nba_app.py:239 nba_app.py:249
+#: nba_app.py:241 nba_app.py:251
 msgid "Altura"
 msgstr "Height"
 
-#: nba_app.py:240 nba_app.py:250
+#: nba_app.py:242 nba_app.py:252
 msgid "Peso"
 msgstr "Weight"
 
-#: nba_app.py:268
+#: nba_app.py:270
 msgid "Colores del equipo 1"
 msgstr "Team 1 colors"
 
-#: nba_app.py:272
+#: nba_app.py:274
 msgid "Caracteristicas del jugador"
 msgstr "Player profile"
 
-#: nba_app.py:275
+#: nba_app.py:277
 msgid "Seleccione las caracteristicas a comparar"
 msgstr "Choose yours features"
 
-#: nba_app.py:301
+#: nba_app.py:303
 msgid "Colores del equipo 2"
 msgstr "Team 2 colors"
 
-#: nba_app.py:337
+#: nba_app.py:339
 msgid "#### Referencias:"
 msgstr "#### References:"
 
-#: nba_app.py:339
+#: nba_app.py:341
 msgid "altura, que influye en casi todo"
 msgstr "height, which factors into pretty much everything"
 
-#: nba_app.py:340
+#: nba_app.py:342
 msgid ""
 "fuerza, que influye en la defensa, el rebote y la anotación en el poste bajo"
 msgstr "strength, which influences defense, rebounding, and low post scoring"
 
-#: nba_app.py:341
+#: nba_app.py:343
 msgid ""
 "velocidad, que influye en el manejo del balón, contraataques rápidos y "
 "defensa"
 msgstr "speed, which influences ball handling, fast breaking, and defense"
 
-#: nba_app.py:342
+#: nba_app.py:344
 msgid ""
 "salto, que influye en la finalización en el aro, el rebote, el bloqueo y la "
 "defensa"
@@ -161,86 +165,86 @@ msgstr ""
 "jumping, which influences finishing at the rim, rebounding, blocking shots, "
 "and defense"
 
-#: nba_app.py:343
+#: nba_app.py:345
 msgid ""
 "resistencia, que determina qué tan rápido se degradan las habilidades de un "
 "jugador cuando se cansa"
 msgstr ""
 "endurance, which governs how fast a player’s skills degrade as he gets tired"
 
-#: nba_app.py:344
+#: nba_app.py:346
 msgid "anotación en el poste bajo"
 msgstr "low post scoring"
 
-#: nba_app.py:345
+#: nba_app.py:347
 msgid "volcadas / bandejas"
 msgstr "dunking/layups"
 
-#: nba_app.py:346
+#: nba_app.py:348
 msgid "lanzamiento de tiros libres"
 msgstr "free throw shooting"
 
-#: nba_app.py:347
+#: nba_app.py:349
 msgid "habilidad de tiro en suspensión de 2 puntos"
 msgstr "2 point jump shot ability"
 
-#: nba_app.py:348
+#: nba_app.py:350
 msgid "tiro de 3 puntos"
 msgstr "3 point shooting"
 
-#: nba_app.py:349
+#: nba_app.py:351
 msgid "coeficiente intelectual ofensivo"
 msgstr "offensive IQ"
 
-#: nba_app.py:350
+#: nba_app.py:352
 msgid "coeficiente intelectual defensivo"
 msgstr "defensive IQ"
 
-#: nba_app.py:351
+#: nba_app.py:353
 msgid "regatear"
 msgstr "dribbling"
 
-#: nba_app.py:352
+#: nba_app.py:354
 msgid "pasando"
 msgstr "passing"
 
-#: nba_app.py:353
+#: nba_app.py:355
 msgid "rebote"
 msgstr "rebounding"
 
-#: nba_app.py:367
+#: nba_app.py:369
 msgid "Ver todos las conferencias"
 msgstr "All conferences"
 
-#: nba_app.py:374
+#: nba_app.py:376
 msgid "Ver todos las divisones"
 msgstr "All divisions"
 
-#: nba_app.py:378
+#: nba_app.py:380
 msgid "Divisiones"
 msgstr "Divisions"
 
-#: nba_app.py:380
+#: nba_app.py:382
 msgid "Conferencias"
 msgstr "Conferences"
 
-#: nba_app.py:434 nba_app.py:445
+#: nba_app.py:436 nba_app.py:447 nba_app.py:471
 msgid "Logo"
 msgstr "Logo"
 
-#: nba_app.py:435 nba_app.py:446
+#: nba_app.py:437 nba_app.py:448
 msgid "Región"
 msgstr "Region"
 
-#: nba_app.py:437 nba_app.py:448
+#: nba_app.py:439 nba_app.py:450
 msgid "Arena"
 msgstr "Estadio"
 
-#: nba_app.py:438 nba_app.py:449
+#: nba_app.py:440 nba_app.py:451
 msgid "Conferencia"
 msgstr "Conference"
 
-#: nba_app.py:439 nba_app.py:450
+#: nba_app.py:441 nba_app.py:452
 msgid "División"
 msgstr "Division"
 
