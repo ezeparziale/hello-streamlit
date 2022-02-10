@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import plotly.graph_objects as go
 import gettext
+from streamlit_folium import folium_static
+import folium
 
 # Inicialización gettext
 _ = gettext.gettext
@@ -63,7 +65,7 @@ def load_data_teams():
     df_teams = pd.read_csv("app/data/teams.csv")
     df_divisions = pd.read_csv("app/data/divisions.csv")
     df_conferences = pd.read_csv("app/data/conferences.csv")
-    df_stadiums = pd.read_csv("app/data/stadiums.csv", usecols=["team_id","arena"])
+    df_stadiums = pd.read_csv("app/data/stadiums.csv", usecols=["team_id","arena","latitude","longitude"])
     df_teams = pd.merge(df_teams, df_divisions)
     df_teams = pd.merge(df_teams, df_conferences)
     df_teams = pd.merge(df_teams, df_stadiums)
@@ -428,7 +430,7 @@ if mode_view == "Teams":
             "team_name",
             "arena",
             "conference",
-            "division",
+            "division"
         ]
 
         column_names[0] = _("Logo")
@@ -456,3 +458,19 @@ if mode_view == "Teams":
         st.write(
             df_teams_img_small.to_html(escape=False, index=False), unsafe_allow_html=True
         )
+
+        st.write("")
+
+        m = folium.Map(location=[34.94, -96.69], zoom_start=4.4)
+
+        for i in range(0,len(df_teams_img_small)):
+            folium.Marker(
+                location=[df_teams_img.iloc[i]['latitude'], df_teams_img.iloc[i]['longitude']],
+                popup=df_teams_img_small.iloc[i][_("Equipo")],
+                icon=folium.DivIcon(
+                    html=df_teams_img_small.iloc[i][_('Logo')])
+                    
+            ).add_to(m)
+
+        folium_static(m, width=910, height=500)
+        
