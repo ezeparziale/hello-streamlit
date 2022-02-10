@@ -37,9 +37,19 @@ else:
 # Configuración pandas
 pd.options.display.float_format = "{:,.1f}".format  # Para mostrar con dos decimales
 
+# Selector de vista
+CHOICES_MODE = {0: _("Jugadores"), 1: _("Equipos")}
+
+def format_func_mode(option):
+        return CHOICES_MODE[option]
+
 mode_view = st.sidebar.selectbox(
-    _("Vista"), [_("Jugadores"),_("Equipos")], index=0
+    _("Vista"),
+    options=list(CHOICES_MODE.keys()),
+    format_func=format_func_mode,
+    key="choices_mode",
 )
+
 # Bara lateral
 st.sidebar.header(_("Opciones:"))
 
