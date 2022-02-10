@@ -38,7 +38,7 @@ else:
 pd.options.display.float_format = "{:,.1f}".format  # Para mostrar con dos decimales
 
 mode_view = st.sidebar.selectbox(
-    _("Vista"), ["Players","Teams"], index=0
+    _("Vista"), [_("Jugadores"),_("Equipos")], index=0
 )
 # Bara lateral
 st.sidebar.header(_("Opciones:"))
