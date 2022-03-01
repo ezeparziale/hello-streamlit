@@ -21,7 +21,7 @@ team_id,conference_id,division_id,region,team_name,team_abbrev,colors,team_img,t
 19,0,0,New York,Knicks,NYK,"['#006BB6', '#F58426', '#BEC0C2']",https://i.imgur.com/5sMoAPA.png,https://i.imgur.com/nvApVkz.png,#006BB6,#F58426,#BEC0C2
 20,1,4,Oklahoma City,Thunder,OKC,"['#007ac1', '#ffffff', '#ef3b24']",https://i.imgur.com/fsQiSlP.png,https://i.imgur.com/ifBY6ON.png,#007ac1,#ffffff,#ef3b24
 21,0,2,Orlando,Magic,ORL,"['#0077c0', '#C4ced4', '#000000']",https://i.imgur.com/H7YpO5e.png,https://i.imgur.com/eWcrkZz.png,#0077c0,#C4ced4,#000000
-22,0,0,Philadelphia,76ers,PHI,"['#006bb6', '#ffffff', '#ed174c']",https://i.imgur.com/LfVzjKN.png,https://i.imgur.com/Paxjuko.png,#006bb6,#ffffff,#ed174c
+22,0,0,Philadelphia,76ers,PHI,"['#2c386b', '#ffffff', '#b90728']",https://i.imgur.com/LfVzjKN.png,https://i.imgur.com/Paxjuko.png,#2c386b,#ffffff,#b90728
 23,1,5,Phoenix,Suns,PHX,"['#1d1160', '#e56020', '#000000']",https://i.imgur.com/hyi60nj.png,https://i.imgur.com/UwbWcAg.png,#1d1160,#e56020,#000000
 24,1,4,Portland,Trail Blazers,POR,"['#E03A3E', '#000000', '#E03A3E']",https://i.imgur.com/IfjmjFJ.png,https://i.imgur.com/u1iRngy.png,#E03A3E,#000000,#E03A3E
 25,1,5,Sacramento,Kings,SAC,"['#5a2d81', '#ffffff', '#63727a']",https://i.imgur.com/WgHr0BH.png,https://i.imgur.com/qYg12Er.png,#5a2d81,#ffffff,#63727a
