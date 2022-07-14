@@ -4,7 +4,7 @@ team_id,conference_id,division_id,region,team_name,team_abbrev,colors,team_img,t
 2,0,0,Brooklyn,Nets,BKN,"['#000000', '#FFFFFF', '#000000']",https://i.imgur.com/lDrufi8.png,https://i.imgur.com/hehPiuV.png,#000000,#FFFFFF,#000000
 3,0,2,Charlotte,Hornets,CHA,"['#00788C', '#1d1160', '#A1A1A4']",https://i.imgur.com/hW7G08N.png,https://i.imgur.com/vXDPD5H.png,#00788C,#1d1160,#A1A1A4
 4,0,1,Chicago,Bulls,CHI,"['#CE1141', '#FFFFFF', '#000000']",https://i.imgur.com/Nulx9UE.png,https://i.imgur.com/T8ApQxR.png,#CE1141,#FFFFFF,#000000
-5,0,1,Cleveland,Cavaliers,CLE,"['#6F263D', '#041E42', '#FFB81C']",https://i.imgur.com/Mh8KHoh.png,https://i.imgur.com/VXYRGJ5.png,#6F263D,#041E42,#FFB81C
+5,0,1,Cleveland,Cavaliers,CLE,"['#72253d', '#b4975a', '#b4975a']",https://i.imgur.com/9xq1vir.png,https://i.imgur.com/0SjE4B4.png,#72253d,#b4975a,#b4975a
 6,1,3,Dallas,Mavericks,DAL,"['#0064b1', '#bbc4ca', '#000000']",https://i.imgur.com/OGDsVKN.png,https://i.imgur.com/kK4kDaz.png,#0064b1,#bbc4ca,#000000
 7,1,4,Denver,Nuggets,DEN,"['#0E2240', '#FEC524', '#8B2131']",https://i.imgur.com/qdYVFSV.png,https://i.imgur.com/xyFKqng.png,#0E2240,#FEC524,#8B2131
 8,0,1,Detroit,Pistons,DET,"['#1d428a', '#c8102e', '#bec0c2']",https://i.imgur.com/uF4RvQt.png,https://i.imgur.com/XKpV0aX.png,#1d428a,#c8102e,#bec0c2
@@ -27,5 +27,5 @@ team_id,conference_id,division_id,region,team_name,team_abbrev,colors,team_img,t
 25,1,5,Sacramento,Kings,SAC,"['#5a2d81', '#ffffff', '#63727a']",https://i.imgur.com/WgHr0BH.png,https://i.imgur.com/qYg12Er.png,#5a2d81,#ffffff,#63727a
 26,1,3,San Antonio,Spurs,SAS,"['#000000', '#c4ced4', '#c4ced4']",https://i.imgur.com/yXLRt2y.png,https://i.imgur.com/HSDTN4L.png,#000000,#c4ced4,#c4ced4
 27,0,0,Toronto,Raptors,TOR,"['#ce1141', '#000000', '#ce1141']",https://upload.wikimedia.org/wikipedia/en/thumb/3/36/Toronto_Raptors_logo.svg/1024px-Toronto_Raptors_logo.svg.png,https://i.imgur.com/RIJMbvD.png,#ce1141,#000000,#ce1141
-28,1,4,Utah,Jazz,UTA,"['#002B5C', '#F9A01B', '#00471B']",https://i.imgur.com/H3ZIR44.png,https://i.imgur.com/MUB0Jcx.png,#002B5C,#F9A01B,#00471B
+28,1,4,Utah,Jazz,UTA,"['#2e1b87', '#ffffff', '#0092d6']",https://i.imgur.com/H3ZIR44.png,https://i.imgur.com/MUB0Jcx.png,#2e1b87,#ffffff,#0092d6
 29,0,2,Washington,Wizards,WAS,"['#002B5C', '#e31837', '#C4CED4']",https://i.imgur.com/KAX48d0.png,https://i.imgur.com/xwDq8vp.png,#002B5C,#e31837,#C4CED4
