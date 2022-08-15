@@ -23,11 +23,11 @@ source env/bin/activate
 ```
 
 ```shell
-pip install -r requirements.txt
+python.exe -m pip install --upgrade pip
 ```
 
 ```shell
-python.exe -m pip install --upgrade pip
+pip install -r requirements.txt
 ```
 
 ## :running_man: Run
