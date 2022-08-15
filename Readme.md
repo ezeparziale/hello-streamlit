@@ -1,6 +1,5 @@
 # :bar_chart: Demo streamlit para analisis de datos
 
-[![Visits Badge](https://badges.pufler.dev/visits/ezeparziale/hello-streamlit?style=flat-square)]()
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/ezeparziale/hello-streamlit/app/nba_app.py)
 
 Demo que utiliza datos de estadisticas de NBA
