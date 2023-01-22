@@ -1,9 +1,10 @@
-import streamlit as st
+import gettext
+
+import folium
 import pandas as pd
 import plotly.graph_objects as go
-import gettext
+import streamlit as st
 from streamlit_folium import folium_static
-import folium
 
 # Inicialización gettext
 _ = gettext.gettext
@@ -40,8 +41,10 @@ pd.options.display.float_format = "{:,.1f}".format  # Para mostrar con dos decim
 # Selector de vista
 CHOICES_MODE = {0: _("Jugadores"), 1: _("Equipos")}
 
+
 def format_func_mode(option):
-        return CHOICES_MODE[option]
+    return CHOICES_MODE[option]
+
 
 mode_view = st.sidebar.selectbox(
     _("Vista"),
@@ -70,16 +73,20 @@ def load_data_players():
     # df[column] = df[column].str.replace(",", ".").astype(float)
     return df
 
+
 @st.cache(allow_output_mutation=True)
 def load_data_teams():
     df_teams = pd.read_csv("app/data/teams.csv")
     df_divisions = pd.read_csv("app/data/divisions.csv")
     df_conferences = pd.read_csv("app/data/conferences.csv")
-    df_stadiums = pd.read_csv("app/data/stadiums.csv", usecols=["team_id","arena","latitude","longitude"])
+    df_stadiums = pd.read_csv(
+        "app/data/stadiums.csv", usecols=["team_id", "arena", "latitude", "longitude"]
+    )
     df_teams = pd.merge(df_teams, df_divisions)
     df_teams = pd.merge(df_teams, df_conferences)
     df_teams = pd.merge(df_teams, df_stadiums)
     return df_teams
+
 
 df_teams = load_data_teams()  # Cargamos los datos de equipos en el dataframe
 df_players = load_data_players()  # Cargamos los datos de jugadores en el dataframe
@@ -115,7 +122,6 @@ if mode_view == 0:
                 _("JUGADOR 2"), sorted_unique_player, index=1
             )
 
-
     # Selector de Equipos
     sorted_unique_team = sorted(df_teams.team_abbrev.unique())
     all_teams = st.sidebar.checkbox(
@@ -129,7 +135,6 @@ if mode_view == 0:
     else:
         selected_team = st.sidebar.multiselect(_("Equipos"), sorted_unique_team)
 
-
     # Filtro el dataframe con los valores seleccionados
     if all_players:
         df_selected = df_players[(df_players.team_abbrev.isin(selected_team))]
@@ -142,7 +147,6 @@ if mode_view == 0:
         else:
             df_selected = df_players[(df_players.player_name == selected_player)]
 
-
     # Subtitulo
     st.write(
         _("Set de datos: ")
@@ -151,7 +155,6 @@ if mode_view == 0:
         + str(df_selected.shape[1])
         + _(" columnas")
     )
-
 
     # Link para descargar el csv
     st.sidebar.download_button(
@@ -162,14 +165,11 @@ if mode_view == 0:
         help=_("Exporta datos en formato CSV"),
     )
 
-
     # Personalización tabla
     CHOICES_PLAYER = {0: _("Imagen+Nombre"), 1: _("Solo imagen"), 2: _("Solo nombre")}
 
-
     def format_func_player(option):
         return CHOICES_PLAYER[option]
-
 
     choices_player = st.sidebar.selectbox(
         _("Personalización jugador"),
@@ -181,10 +181,8 @@ if mode_view == 0:
     if choices_player in [0, 1]:
         player_img_size = st.sidebar.slider(_("JUGADOR TAMAÑO IMAGEN"), 50, 200, 80)
 
-
     def format_func_team(option):
         return CHOICES_TEAM[option]
-
 
     choices_team = st.sidebar.selectbox(
         _("Personalización Equipo"),
@@ -195,7 +193,6 @@ if mode_view == 0:
 
     if choices_team in [0, 1]:
         team_img_size = st.sidebar.slider(_("TEAM TAMAÑO IMAGEN"), 50, 130, 60)
-
 
     # Mostramos el dataframe
     with st.container():
@@ -266,13 +263,12 @@ if mode_view == 0:
 
         df_players_img_small = df_players_img_small.reindex(columns=column_names)
         st.write(
-            df_players_img_small.to_html(escape=False, index=False), unsafe_allow_html=True
+            df_players_img_small.to_html(escape=False, index=False),
+            unsafe_allow_html=True,
         )
-
 
     # Linea entre tabla y radar
     st.write("")
-
 
     # Grafico radar
     if all_players is False:
@@ -344,25 +340,61 @@ if mode_view == 0:
 
         st.plotly_chart(fig)
 
-
     # Referencias
-    st.markdown( _("#### Referencias:"))
+    st.markdown(_("#### Referencias:"))
     st.markdown(
-        "hgt: " + _("altura, que influye en casi todo")  + " \n" +
-        "stre: " + _("fuerza, que influye en la defensa, el rebote y la anotación en el poste bajo")  + "  \n" +
-        "spd: " + _("velocidad, que influye en el manejo del balón, contraataques rápidos y defensa")  + "  \n" +
-        "jmp: " + _("salto, que influye en la finalización en el aro, el rebote, el bloqueo y la defensa")  + "  \n" +
-        "endu: " + _("resistencia, que determina qué tan rápido se degradan las habilidades de un jugador cuando se cansa")  + "  \n" +
-        "ins: " + _("anotación en el poste bajo")  + "  \n" +
-        "dnk: " + _("volcadas / bandejas")  + "  \n" +
-        "ft: " + _("lanzamiento de tiros libres")  + "  \n" +
-        "fg: " + _("habilidad de tiro en suspensión de 2 puntos")  + "  \n" +
-        "tp: " + _("tiro de 3 puntos")  + "  \n" +
-        "oiq: " + _("coeficiente intelectual ofensivo")  + "  \n" +
-        "diq: " + _("coeficiente intelectual defensivo")  + "  \n" +
-        "drb: " + _("regatear")  + "  \n" +
-        "pd: " + _("pasando")  + "  \n" +
-        "reb: " + _("rebote")
+        "hgt: "
+        + _("altura, que influye en casi todo")
+        + " \n"
+        + "stre: "
+        + _(
+            "fuerza, que influye en la defensa, el rebote y la anotación en el poste bajo"
+        )
+        + "  \n"
+        + "spd: "
+        + _(
+            "velocidad, que influye en el manejo del balón, contraataques rápidos y defensa"
+        )
+        + "  \n"
+        + "jmp: "
+        + _(
+            "salto, que influye en la finalización en el aro, el rebote, el bloqueo y la defensa"
+        )
+        + "  \n"
+        + "endu: "
+        + _(
+            "resistencia, que determina qué tan rápido se degradan las habilidades de un jugador cuando se cansa"
+        )
+        + "  \n"
+        + "ins: "
+        + _("anotación en el poste bajo")
+        + "  \n"
+        + "dnk: "
+        + _("volcadas / bandejas")
+        + "  \n"
+        + "ft: "
+        + _("lanzamiento de tiros libres")
+        + "  \n"
+        + "fg: "
+        + _("habilidad de tiro en suspensión de 2 puntos")
+        + "  \n"
+        + "tp: "
+        + _("tiro de 3 puntos")
+        + "  \n"
+        + "oiq: "
+        + _("coeficiente intelectual ofensivo")
+        + "  \n"
+        + "diq: "
+        + _("coeficiente intelectual defensivo")
+        + "  \n"
+        + "drb: "
+        + _("regatear")
+        + "  \n"
+        + "pd: "
+        + _("pasando")
+        + "  \n"
+        + "reb: "
+        + _("rebote")
     )
 
 if mode_view == 1:
@@ -387,16 +419,18 @@ if mode_view == 1:
             )
 
             if not all_divisions:
-                selected_division = st.sidebar.selectbox(_("Divisiones"), sorted_unique_division)
+                selected_division = st.sidebar.selectbox(
+                    _("Divisiones"), sorted_unique_division
+                )
         else:
-            selected_conference = st.sidebar.selectbox(_("Conferencias"), sorted_unique_conference)
+            selected_conference = st.sidebar.selectbox(
+                _("Conferencias"), sorted_unique_conference
+            )
     else:
         selected_team = st.sidebar.selectbox(_("Equipos"), sorted_unique_team)
-    
-    
+
     def format_func_team(option):
         return CHOICES_TEAM[option]
-
 
     choices_team = st.sidebar.selectbox(
         _("Personalización Equipo"),
@@ -414,10 +448,14 @@ if mode_view == 1:
         df_selected = df_selected[(df_selected.team_abbrev.isin([selected_team]))]
     else:
         if not all_conferences:
-            df_selected = df_selected[(df_selected.conference.isin([selected_conference]))]
+            df_selected = df_selected[
+                (df_selected.conference.isin([selected_conference]))
+            ]
         else:
             if not all_divisions:
-                df_selected = df_selected[(df_selected.division.isin([selected_division]))]
+                df_selected = df_selected[
+                    (df_selected.division.isin([selected_division]))
+                ]
 
     with st.container():
         df_teams_img = df_selected.copy()
@@ -432,7 +470,19 @@ if mode_view == 1:
         ]
 
         df_teams_img = df_teams_img.drop(
-            ["team_id", "conference_id", "division_id","team_abbrev","colors", "team_img","team_img_small","color_0","color_1","color_2"], axis=1
+            [
+                "team_id",
+                "conference_id",
+                "division_id",
+                "team_abbrev",
+                "colors",
+                "team_img",
+                "team_img_small",
+                "color_0",
+                "color_1",
+                "color_2",
+            ],
+            axis=1,
         )
         column_names = [
             "team_img_small_url",
@@ -440,7 +490,7 @@ if mode_view == 1:
             "team_name",
             "arena",
             "conference",
-            "division"
+            "division",
         ]
 
         column_names[0] = _("Logo")
@@ -459,28 +509,29 @@ if mode_view == 1:
                 "team_name": _("Equipo"),
                 "arena": _("Arena"),
                 "conference": _("Conferencia"),
-                "division": _("División")
+                "division": _("División"),
             },
             inplace=True,
         )
 
         df_teams_img_small = df_teams_img_small.reindex(columns=column_names)
         st.write(
-            df_teams_img_small.to_html(escape=False, index=False), unsafe_allow_html=True
+            df_teams_img_small.to_html(escape=False, index=False),
+            unsafe_allow_html=True,
         )
 
         st.write("")
 
         m = folium.Map(location=[34.94, -96.69], zoom_start=4.4)
 
-        for i in range(0,len(df_teams_img_small)):
+        for i in range(0, len(df_teams_img_small)):
             folium.Marker(
-                location=[df_teams_img.iloc[i]['latitude'], df_teams_img.iloc[i]['longitude']],
+                location=[
+                    df_teams_img.iloc[i]["latitude"],
+                    df_teams_img.iloc[i]["longitude"],
+                ],
                 popup=df_teams_img_small.iloc[i][_("Equipo")],
-                icon=folium.DivIcon(
-                    html=df_teams_img_small.iloc[i][_('Logo')])
-                    
+                icon=folium.DivIcon(html=df_teams_img_small.iloc[i][_("Logo")]),
             ).add_to(m)
 
         folium_static(m, width=910, height=500)
-        
