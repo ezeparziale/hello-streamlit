@@ -1,8 +1,8 @@
-# :bar_chart: Demo streamlit para analisis de datos
+# :bar_chart: Streamlit Demo for Data Analysis
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://share.streamlit.io/ezeparziale/hello-streamlit/app/nba_app.py)
 
-Demo que utiliza datos de estadisticas de NBA
+Demo using NBA statistics data.
 
 ![image](app/img/app.png)
 
@@ -12,7 +12,7 @@ Demo que utiliza datos de estadisticas de NBA
 
 ![image](app/img/app_4.png)
 
-## :floppy_disk: Instalación
+## :floppy_disk: Installation
 
 ```shell
 python -m venv env
@@ -40,19 +40,19 @@ streamlit run app/nba_app.py
 http://localhost:8501
 ```
 
-## :basketball: Funciones
+## :basketball: Features
 
-- Listados de estadisticas completas de jugadores
-- Logos de equipos
-- Imagenes de jugadores
-- Comparación entre jugadores
-- Selector de imagen o texto en jugador
-- Selector de imagen o texto en equipo
-- Ajuste de tamaño de imagenes
-- Selector de idioma Español e Ingles
-- Exportación a CSV
-- Publicación en streamlit cloud
-- Selector de color en radar en función de los colores del equipo
-- Selector de vista Jugardor
-- Selector de vista Equipo
-- Vista equipo con mapa
+- Comprehensive player statistics listings
+- Team logos
+- Player images
+- Player comparison
+- Image or text selector for players
+- Image or text selector for teams
+- Image size adjustment
+- Language selector for Spanish and English
+- CSV export
+- Deployment on Streamlit Cloud
+- Color selector in radar based on team colors
+- Player view selector
+- Team view selector
+- Team view with map
