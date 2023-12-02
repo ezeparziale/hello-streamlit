@@ -61,8 +61,9 @@ t1, t2 = st.columns((0.08, 1))
 t1.image("app/img/logo.png", width=50)
 t2.title(_("NBA estadísticas"))
 
+
 # Carga de datos
-@st.cache(allow_output_mutation=True)
+@st.cache_data()
 def load_data_players():
     df = pd.read_csv("app/data/players.csv")
     filter_col = ["conference_id", "division_id", "region", "team_name", "team_img"]
@@ -74,7 +75,7 @@ def load_data_players():
     return df
 
 
-@st.cache(allow_output_mutation=True)
+@st.cache_data()
 def load_data_teams():
     df_teams = pd.read_csv("app/data/teams.csv")
     df_divisions = pd.read_csv("app/data/divisions.csv")
