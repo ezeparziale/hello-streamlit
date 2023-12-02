@@ -68,10 +68,6 @@ def load_data_players():
     df = pd.read_csv("app/data/players.csv")
     filter_col = ["conference_id", "division_id", "region", "team_name", "team_img"]
     df = df.drop(filter_col, axis=1)
-    # df = df.rename(columns={"FULL_NAME": "JUGADOR"})
-    # for column in filter_col:
-    #     df[column] = df[column].astype(str)
-    # df[column] = df[column].str.replace(",", ".").astype(float)
     return df
 
 
